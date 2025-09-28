@@ -1,6 +1,5 @@
 package org.main.block_03
 
-import groovy.sql.Sql
 import groovy.json.JsonOutput
 import jakarta.servlet.annotation.WebServlet
 import jakarta.servlet.http.HttpServlet
@@ -13,10 +12,8 @@ class GetUsersServlet extends HttpServlet {
     void doGet(HttpServletRequest req, HttpServletResponse resp) {
         def sql = null
         try {
-            sql = Sql.newInstance("jdbc:postgresql://db:5432/mywebappdb",
-                    "postgres",
-                    "postgres",
-                    "org.postgresql.Driver")
+
+            sql = DBUtil.getConnection() //from my custom class
 
             def users = sql.rows("SELECT * FROM users ORDER BY id")
 

@@ -10,6 +10,6 @@ FROM tomcat:11.0.11-jdk21-temurin
 
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-COPY --from=builder /home/gradle/project/build/libs/*.war /usr/local/tomcat/webapps/app.war
+COPY --from=builder /home/gradle/project/build/libs/*.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080

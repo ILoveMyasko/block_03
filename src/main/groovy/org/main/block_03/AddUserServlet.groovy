@@ -4,7 +4,6 @@ import jakarta.servlet.annotation.WebServlet
 import jakarta.servlet.http.HttpServlet
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
-import groovy.sql.Sql
 import groovy.json.JsonOutput
 
 @WebServlet("/addUser")
@@ -24,10 +23,8 @@ class AddUserServlet extends HttpServlet {
                 return
             }
 
-            sql = Sql.newInstance("jdbc:postgresql://db:5432/mywebappdb",
-                    "postgres",
-                    "postgres",
-                    "org.postgresql.Driver")
+            sql = DBUtil.getConnection() //from my custom class
+
             sql.execute("INSERT INTO users (name, email) VALUES (${name}, ${email})")
 
             resp.setContentType("application/json")
