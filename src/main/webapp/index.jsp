@@ -25,7 +25,7 @@
 <h1>Получить список всех пользователей</h1>
 
 
-<a href="${pageContext.request.contextPath}/users" target="_blank">Показать JSON со всеми пользователями</a>
+<a href="${pageContext.request.contextPath}/users">Показать JSON со всеми пользователями</a>
 
 </body>
 </html>

@@ -13,7 +13,7 @@ class GetUsersServlet extends HttpServlet {
     void doGet(HttpServletRequest req, HttpServletResponse resp) {
         def sql = null
         try {
-            sql = Sql.newInstance("jdbc:postgresql://localhost:5432/mywebappdb",
+            sql = Sql.newInstance("jdbc:postgresql://db:5432/mywebappdb",
                     "postgres",
                     "postgres",
                     "org.postgresql.Driver")
