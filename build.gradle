@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'groovy'
+    id 'war'
+}
+
+group 'org.main'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.11.0'
+
+}
+
+sourceCompatibility = '21'
+targetCompatibility = '21'
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    implementation('org.apache.groovy:groovy:5.0.0-alpha-10')
+    compileOnly('jakarta.servlet:jakarta.servlet-api:6.1.0')
+    implementation('org.postgresql:postgresql:42.7.7')
+    def groovyVersion = '5.0'
+    implementation("org.apache.groovy:groovy:${groovyVersion}")
+    implementation("org.apache.groovy:groovy-sql:${groovyVersion}")
+    implementation("org.apache.groovy:groovy-json:${groovyVersion}")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
+    implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
+}
+
+test {
+    useJUnitPlatform()
+}
